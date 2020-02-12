@@ -1,0 +1,13 @@
+{
+  "$id": "hvac-status.json",
+  "title": "Hvac status",
+  "type": "object",
+  "description": "hvac status data",
+  "required": ["status"],
+  "properties": {
+    "status": {
+      "type": "string",
+      "enum": ["heating", "cooling", "heaterOverheat", "coolerOverheat"]
+    }
+  }
+}

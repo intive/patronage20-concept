@@ -1,0 +1,23 @@
+{
+  "$id": "temperature-sensor.json",
+  "title": "Temperature Sensor",
+  "type": "object",
+  "description": "Temperature Sensor data",
+  "required": ["id", "type", "value"],
+  "properties": {
+    "id": {
+      "type": "integer",
+      "format": "int32",
+      "description": "Sensor ID"
+    },
+    "type": {
+      "type": "string",
+      "const": "temperatureSensor"
+    },
+    "value": {
+      "type": "integer",
+      "format": "int32",
+      "description": "In tens of degrees of Celsius"
+    }
+  }
+}

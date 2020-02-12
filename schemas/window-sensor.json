@@ -1,0 +1,23 @@
+{
+  "$id": "window-sensor.json",
+  "title": "Window Sensor",
+  "type": "object",
+  "description": "Window Sensor data",
+  "required": ["id", "type", "status"],
+  "properties": {
+    "id": {
+      "type": "integer",
+      "format": "int32",
+      "description": "Sensor ID"
+    },
+    "type": {
+      "type": "string",
+      "const": "windowSensor"
+    },
+    "status": {
+      "type": "string",
+      "description": "status of the window sensor",
+      "enum": ["open", "closed"]
+    }
+  }
+}

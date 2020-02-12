@@ -1,0 +1,22 @@
+{
+  "$id": "smoke-sensor.json",
+  "title": "Smoke Sensor",
+  "type": "object",
+  "description": "Smoke Sensor data",
+  "required": ["id", "type", "isSmokeDetected"],
+  "properties": {
+    "id": {
+      "type": "integer",
+      "format": "int32",
+      "description": "Sensor ID"
+    },
+    "type": {
+      "type": "string",
+      "const": "smokeSensor"
+    },
+    "isSmokeDetected": {
+      "type": "boolean",
+      "description": "Flag indicating if the smoke sensor detected smoke"
+    }
+  }
+}

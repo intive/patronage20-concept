@@ -1,0 +1,25 @@
+{
+  "$id": "window-blind.json",
+  "title": "Window Blind",
+  "type": "object",
+  "description": "Window Blind data",
+  "required": ["id", "type", "position"],
+  "properties": {
+    "id": {
+      "type": "integer",
+      "format": "int32",
+      "description": "Blind ID"
+    },
+    "type": {
+      "type": "string",
+      "const": "windowBlind"
+    },
+    "position": {
+      "type": "integer",
+      "format": "int32",
+      "description": "position of the window blind, 100 is fully open, 0 is fully closed",
+      "min": 0,
+      "max": 100
+    }
+  }
+}

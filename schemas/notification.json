@@ -1,0 +1,27 @@
+{
+  "$id": "notification.json",
+  "title": "Notification",
+  "type": "object",
+  "description": "Notification data",
+  "required": ["id", "type", "timestamp", "sensorId"],
+  "properties": {
+    "id": {
+      "type": "integer",
+      "format": "int64",
+      "description": "Notification ID"
+    },
+    "timestamp": {
+      "type": "integer",
+      "format": "int64",
+      "description": "Unix epoch time"
+    },
+    "type": {
+      "type": "string",
+      "enum": ["alert", "doorbell", "hvac", "windowSensor", "RFIDSensor"]
+    },
+    "sensorId": {
+      "type": "integer",
+      "format": "int64"
+    }
+  }
+}

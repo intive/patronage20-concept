@@ -1,0 +1,34 @@
+{
+  "$id": "hvac-rule.json",
+  "title": "HVAC rule",
+  "type": "object",
+  "description": "HVAC rule configuration",
+  "required": ["temperature", "hysteresis", "temperatureSensorId", "windowSensorIds"],
+  "properties": {
+    "id": {
+      "type": "integer",
+      "format": "int32",
+      "description": "rule ID"
+    },
+    "temperature": {
+      "type": "integer",
+      "format": "int32",
+      "description": "In tens of degrees of Celsius"
+    },
+    "hysteresis": {
+      "type": "integer",
+      "format": "int32",
+      "description": "In tens of degrees of Celsius"
+    },
+    "temperatureSensorId": {
+      "$ref": "window-sensor.json#/properties/id"
+    },
+    "windowSensorIds": {
+      "type": "array",
+      "description": "Opened window sensor ID-s that disable HVAC for that room",
+      "items": {
+        "$ref": "window-sensor.json#/properties/id"
+      }
+    }
+  }
+}

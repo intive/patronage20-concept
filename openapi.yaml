@@ -1,0 +1,167 @@
+openapi: 3.0.0
+info:
+  description: API for Smart Home GateWay
+  version: 1.0.0
+  title: Smart Home API
+servers:
+  - url: /smart-home
+tags:
+  - name: Dashboard
+  - name: HVAC rules
+  - name: Notifications
+paths:
+  '/dashboard':
+    get:
+      summary: Returns all data about home
+      tags:
+        - Dashboard
+      responses:
+        "200":
+          description: System status and information
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Dashboard'
+  '/rules/hvac':
+    get:
+      summary: Returns HVAC rules configurations
+      tags:
+        - HVAC rules
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/HVACRule'
+    post:
+      summary: Creates a room HVAC configuration and returns its ID
+      tags:
+        - HVAC rules
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/HVACRule'
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    $ref: '#/components/schemas/HVACRule/properties/id'
+        "400":
+          description: bad request
+  '/room-hvac/{id}':
+    get:
+      summary: Returns room HVAC configuration
+      tags:
+        - HVAC rules
+      parameters:
+      - $ref: '#/components/parameters/id32'
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HVACRule'
+        "404":
+          description: Not found
+    put:
+      summary: Creates or updates a room HVAC configuration with given ID
+      tags:
+        - HVAC rules
+      parameters:
+      - $ref: '#/components/parameters/id32'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/HVACRule'
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: bad request
+        "404":
+          description: Not found
+    delete:
+      summary: Deletes a room HVAC configuration with a given ID
+      tags:
+        - HVAC rules
+      parameters:
+      - $ref: '#/components/parameters/id32'
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: Not found
+  '/notifications':
+    get:
+      summary: Returns notification list
+      tags:
+        - Notifications
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Notification'
+  '/notifications/{id}':
+    delete:
+      summary: Deletes notification with given ID
+      tags:
+        - Notifications
+      parameters:
+      - $ref: '#/components/parameters/id64'
+      responses:
+        "200":
+          description: OK
+components:
+  parameters:
+    id32:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: integer
+        format: int32
+    id64:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: integer
+        format: int64
+  schemas:
+    Dashboard:
+      $ref: 'schemas/dashboard.json'
+    WindowSensor:
+      $ref: 'schemas/window-sensor.json'
+    WindowBlind:
+      $ref: 'schemas/window-blind.json'
+    TemperatureSensor:
+      $ref: 'schemas/temperature-sensor.json'
+    RFIDSensor:
+      $ref: 'schemas/rfid-sensor.json'
+    SmokeSensor:
+      $ref: 'schemas/smoke-sensor.json'
+    HVACStatus:
+      $ref: 'schemas/hvac-status.json'
+    # LightPoint:
+    #   $ref: 'schema/light-point.json'
+    HVACRule:
+      $ref: 'schemas/hvac-rule.json'
+    Notification:
+      $ref: 'schemas/notification.json'

@@ -1,0 +1,21 @@
+{
+  "$id": "rfid-sensor.json",
+  "title": "RFID Sensor",
+  "type": "object",
+  "description": "RFID Sensor data",
+  "required": ["id", "type"],
+  "properties": {
+    "id": {
+      "type": "integer",
+      "format": "int32",
+      "description": "Sensor ID"
+    },
+    "type": {
+      "type": "string",
+      "const": "RFIDSensor"
+    },
+    "lastTag": {
+      "$ref": "rfid-tag.json"
+    }
+  }
+}

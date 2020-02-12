@@ -1,0 +1,41 @@
+{
+  "$id": "dashboard.json",
+  "title": "Dashboard",
+  "type": "object",
+  "description": "System information",
+  "properties": {
+    "temperatureSensors": {
+      "type": "array",
+      "items": {
+        "$ref": "temperature-sensor.json"
+      }
+    },
+    "windowSensors": {
+      "type": "array",
+      "items": {
+        "$ref": "window-sensor.json"
+      }
+    },
+    "windowBlinds": {
+      "type": "array",
+      "items": {
+        "$ref": "window-blind.json"
+      }
+    },
+    "RFIDSensors": {
+      "type": "array",
+      "items": {
+        "$ref": "rfid-sensor.json"
+      }
+    },
+    "smokeSensors": {
+      "type": "array",
+      "items": {
+        "$ref": "smoke-sensor.json"
+      }
+    },
+    "HVACStatus": {
+      "$ref": "hvac-status.json"
+    }
+  }
+}
