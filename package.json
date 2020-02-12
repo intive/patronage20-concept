@@ -1,0 +1,22 @@
+{
+  "name": "patronage20-concept",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/intive/patronage20-concept.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/intive/patronage20-concept/issues"
+  },
+  "homepage": "https://github.com/intive/patronage20-concept#readme",
+  "dependencies": {
+    "swagger-parser": "^8.0.4"
+  }
+}
