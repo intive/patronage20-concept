@@ -3,11 +3,13 @@
   "title": "Hvac status",
   "type": "object",
   "description": "hvac status data",
-  "required": ["status"],
+  "required": ["heating", "cooling"],
   "properties": {
-    "status": {
-      "type": "string",
-      "enum": ["heating", "cooling", "heaterOverheat", "coolerOverheat"]
+    "heating": {
+      "type": "boolean"
+    },
+    "cooling": {
+      "type": "boolean"
     }
   }
 }
