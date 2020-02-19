@@ -21,6 +21,7 @@ module casing() {
         cylinder(d = 12, h = 22, center = false);
         translate([0,0,9]) cylinder(d = 22, h = 7, center = false);
         translate([0,0,15]) cylinder(d = 18, h = 7, center = false);
+        *translate([0,0,15]) cylinder(d = 14, h = 7, center = false);
         for (y = [9.5,-9.5], z = [6,-7]) {
             translate([0,y,z]) rotate([0,90,0]) cylinder(d = 2.5, h = 10, center = true);
             translate([0,y,z]) rotate([0,90,0]) cylinder(d = 3.2, h = 10);
@@ -38,6 +39,10 @@ module handle(a) {
                     translate([0,0,21.5]) cylinder(h = 1.5, d = 11.5);
                     translate([14.5,0,21.5]) cylinder(h = 1.5, d = 3);
                     translate([-14.5,0,21.5]) cylinder(h = 1.5, d = 3);
+                }
+                hull() {
+                    translate([0,0,16.2]) cylinder(h = 6.8, d = 3);
+                    translate([0,-7,16.2]) cylinder(h = 6.8, d = 3);
                 }
             }
             rotate([0,0,-45]) linear_extrude(height = 20) hexagon(4.8);
