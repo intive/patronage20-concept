@@ -55,19 +55,19 @@ module handle(a) {
     }
 }
 
-module valve(a) {
-    translate([20,0,0]) intersection() {
+module valve(a,s) {
+    translate([s,0,0]) intersection() {
         casing();
         translate([0,-40,-40]) cube([80,80,80]);
     }
-    translate([-20,0,0]) intersection() {
+    translate([-s,0,0]) intersection() {
         casing();
         translate([-80,-40,-40]) cube([80,80,80]);
     }
     ball(a);
-    translate([0,0,20]) handle(a);
+    translate([0,0,s]) handle(a);
 }
 
 $fa = .1;
 $fs = .2;
-valve(0);
+valve(0,0);
