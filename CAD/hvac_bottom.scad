@@ -191,11 +191,6 @@ module hvac_top() {
     }
 }
 
-module hvac() {
-    hvac_bottom();
-    hvac_top();
-}
-
 $fs = .2;
 $fa = .1;
-hvac();
+hvac_bottom();
