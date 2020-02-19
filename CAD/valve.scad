@@ -5,6 +5,7 @@ module ball(a) {
         union() {
             sphere(d = 18);
             cylinder(d = 8.1, h = 16);
+            cylinder(d = 11.5, h = 9);
             linear_extrude(height = 20) hexagon(4.8);
         }
         rotate([0,90,0]) cylinder(d = 12, h = 20, center = true);
@@ -17,7 +18,7 @@ module casing() {
         translate([0,0,3]) cube([26,26,28], center = true);
         rotate([0,90,0]) cylinder(d = 12, h = 60, center = true);
         sphere(d = 18.4);
-        cylinder(d = 8.5, h = 22, center = false);
+        cylinder(d = 12, h = 22, center = false);
         translate([0,0,9]) cylinder(d = 22, h = 7, center = false);
         translate([0,0,15]) cylinder(d = 18, h = 7, center = false);
         for (y = [9.5,-9.5], z = [6,-7]) {
