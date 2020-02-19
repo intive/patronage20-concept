@@ -4,7 +4,7 @@ module ball(a) {
     rotate([0,0,a]) difference() {
         union() {
             sphere(d = 18);
-            cylinder(d = 8, h = 16);
+            cylinder(d = 8.1, h = 16);
             linear_extrude(height = 20) hexagon(4.8);
         }
         rotate([0,90,0]) cylinder(d = 12, h = 20, center = true);
