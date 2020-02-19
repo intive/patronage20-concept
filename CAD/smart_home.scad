@@ -1,4 +1,4 @@
-use <HVAC.scad>
+use <hvac.scad>
 use <house.scad>
 
 $fs = .2;
