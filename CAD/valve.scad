@@ -14,7 +14,7 @@ module ball(a) {
 
 module casing() {
     difference() {
-        translate([0,0,3.5]) cube([26,26,27], center = true);
+        translate([0,0,3]) cube([26,26,28], center = true);
         rotate([0,90,0]) cylinder(d = 12, h = 60, center = true);
         sphere(d = 18.4);
         cylinder(d = 8.5, h = 22, center = false);
