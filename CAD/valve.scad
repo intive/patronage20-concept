@@ -74,4 +74,4 @@ module valve(a,s) {
 
 $fa = .1;
 $fs = .2;
-valve(0,0);
+valve(0,20);
