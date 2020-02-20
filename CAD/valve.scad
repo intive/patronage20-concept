@@ -20,8 +20,12 @@ module casing() {
         sphere(d = 18.4);
         cylinder(d = 12, h = 22, center = false);
         translate([0,0,9]) cylinder(d = 22, h = 7, center = false);
-        translate([0,0,15]) cylinder(d = 18, h = 7, center = false);
-        *translate([0,0,15]) cylinder(d = 14, h = 7, center = false);
+        translate([0,0,15]) cylinder(d = 14, h = 7, center = false);
+        intersection() {
+            translate([0,0,15]) cylinder(d = 18, h = 7, center = false);
+            translate([0,0,15]) rotate([0,0,-45]) translate([-10,-13.5,0]) cube([20,15,10]);
+            translate([0,0,15]) rotate([0,0,45]) translate([-10,-13.5,0]) cube([20,15,10]);
+        }
         for (y = [9.5,-9.5], z = [6,-7]) {
             translate([0,y,z]) rotate([0,90,0]) cylinder(d = 2.5, h = 10, center = true);
             translate([0,y,z]) rotate([0,90,0]) cylinder(d = 3.2, h = 10);
