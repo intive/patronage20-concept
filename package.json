@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "mock-server": "prism mock docs/gateway/openapi.yaml",
+    "mock-server:dynamic": "prism mock -d docs/gateway/openapi.yaml"
   },
   "repository": {
     "type": "git",
@@ -17,6 +19,7 @@
   },
   "homepage": "https://github.com/intive/patronage20-concept#readme",
   "dependencies": {
+    "@stoplight/prism-cli": "^3.2.9",
     "swagger-parser": "^8.0.4"
   }
 }
