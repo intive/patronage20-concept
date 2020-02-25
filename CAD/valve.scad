@@ -67,6 +67,13 @@ module binding() {
     }
 }
 
+module binding2() {
+    translate([0,-22.3,0]) binding();
+    translate([0,22.3,0]) binding();
+    translate([-16,-6.3,-13]) cube([4.8,12.6,21.6]);
+    translate([11.2,-6.3,-13]) cube([4.8,12.6,21.6]);
+}
+
 module valve(a,s) {
     translate([s,0,0]) intersection() {
         casing();
@@ -83,4 +90,5 @@ module valve(a,s) {
 
 $fa = .1;
 $fs = .2;
-valve(0,20);
+*valve(0,20);
+binding2();
