@@ -17,9 +17,9 @@ module casing() {
     difference() {
         translate([0,0,4]) rounded_cube([26,26,34], r = 2, center = true);
         rotate([0,90,0]) cylinder(d = 15, h = 60, center = true);
-        sphere(d = 22);
+        sphere(d = 22.4);
         cylinder(d = 12, h = 22, center = false);
-        translate([0,0,10.8]) cylinder(d = 22, h = 7, center = false);
+        translate([0,0,10.8]) cylinder(d = 22.4, h = 7, center = false);
         translate([0,0,15]) cylinder(d = 14, h = 7, center = false);
         intersection() {
             translate([0,0,15]) cylinder(d = 18, h = 7, center = false);
@@ -62,7 +62,7 @@ module handle(a) {
 module binding() {
     difference() {
         translate([0,0,4]) cube([32,32,34], center = true);
-        translate([0,0,4]) cube([26.2,26.2,36], center = true);
+        translate([0,0,4]) cube([26.4,26.4,36], center = true);
         rotate([0,90,0]) cylinder(d = 15, h = 60, center = true);
     }
 }
