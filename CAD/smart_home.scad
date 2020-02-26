@@ -10,4 +10,4 @@ intersection() {
     *translate([0,147,0]) cube([400,6,200]);
 }
 translate([0,0,136]) house();
-//binding2();
+rotate([0,0,90]) rotate([180,0,0]) binding2();
