@@ -70,8 +70,14 @@ module binding() {
 module binding2() {
     translate([0,-22.3,0]) binding();
     translate([0,22.3,0]) binding();
-    translate([-16,-6.3,-13]) cube([4.8,12.6,21.6]);
-    translate([11.2,-6.3,-13]) cube([4.8,12.6,21.6]);
+    difference() {
+        translate([-16,-6.3,-8.6]) cube([4.8,12.6,17.2]);
+        translate([-13.5,0,1]) cylinder(d = 1.6, h = 8);
+    }
+    difference() {
+        translate([11.2,-6.3,-8.6]) cube([4.8,12.6,17.2]);
+        translate([13.5,0,1]) cylinder(d = 1.6, h = 8);
+    }
 }
 
 module valve(a,s) {
