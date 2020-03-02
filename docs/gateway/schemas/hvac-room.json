@@ -4,10 +4,7 @@
   "type": "object",
   "description": "HVAC room configuration",
   "required": [
-    "temperature",
-    "hysteresis",
-    "temperatureSensorId",
-    "windowSensorIds"
+    "id"
   ],
   "properties": {
     "id": {
