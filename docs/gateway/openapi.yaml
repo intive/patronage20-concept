@@ -22,7 +22,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Dashboard'
-  /hvac:
+  '/hvac':
     put:
       summary: Updates a HVAC room configuration
       tags:
@@ -41,7 +41,7 @@ paths:
           description: bad request
         "404":
           description: Not found
-  /blinds:
+  '/blinds':
     put:
       summary: Sets Window blinds to given state.
       tags:
@@ -60,7 +60,7 @@ paths:
           description: bad request
         "404":
           description: Not found
-  /light:
+  '/light':
     put:
       summary: Sets light to given color.
       tags:
@@ -79,7 +79,7 @@ paths:
           description: bad request
         "404":
           description: Not found
-  /notifications:
+  '/notifications':
     get:
       summary: Returns notification list
       tags:
