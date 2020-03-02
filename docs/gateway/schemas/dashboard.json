@@ -6,8 +6,10 @@
   "properties": {
     "temperatureSensors": {
       "type": "array",
+      "maxItems": "3",
+      "minItems": "3",
       "items": {
-        "$ref": "temperature-sensor.json"
+        "$ref": "temperature-sensor.json",
       }
     },
     "windowSensors": {

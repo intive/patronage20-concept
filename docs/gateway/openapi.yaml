@@ -22,6 +22,17 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Dashboard'
+              examples:
+                smart-home:
+                  value:
+                    temperatureSensors:
+                      - id: 1
+                        type: temperatureSensor
+                        value: 13
+                    windowSensors:
+                    RFIDSensors:
+                    smokeSensors:
+                    HVACStatus:
   '/rules/hvac':
     get:
       summary: Returns HVAC rules configurations
