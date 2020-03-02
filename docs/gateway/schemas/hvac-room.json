@@ -1,9 +1,14 @@
 {
-  "$id": "hvac-rule.json",
-  "title": "HVAC rule",
+  "$id": "hvac-room.json",
+  "title": "HVAC Room",
   "type": "object",
-  "description": "HVAC rule configuration",
-  "required": ["temperature", "hysteresis", "temperatureSensorId", "windowSensorIds"],
+  "description": "HVAC room configuration",
+  "required": [
+    "temperature",
+    "hysteresis",
+    "temperatureSensorId",
+    "windowSensorIds"
+  ],
   "properties": {
     "id": {
       "type": "integer",
@@ -21,7 +26,7 @@
       "description": "In tens of degrees of Celsius"
     },
     "temperatureSensorId": {
-      "$ref": "window-sensor.json#/properties/id"
+      "$ref": "temperature-sensor.json#/properties/id"
     },
     "windowSensorIds": {
       "type": "array",
