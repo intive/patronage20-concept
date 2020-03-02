@@ -10,13 +10,13 @@ tags:
   - name: Configuration
   - name: Notifications
 paths:
-  /dashboard:
+  '/dashboard':
     get:
       summary: Returns all data about home
       tags:
         - Dashboard
       responses:
-        '200':
+        "200":
           description: System status and information
           content:
             application/json:
@@ -35,11 +35,11 @@ paths:
             schema:
               $ref: '#/components/schemas/HVACRoom'
       responses:
-        '200':
+        "200":
           description: OK
-        '400':
+        "400":
           description: bad request
-        '404':
+        "404":
           description: Not found
   /blinds:
     put:
@@ -54,11 +54,11 @@ paths:
             schema:
               $ref: '#/components/schemas/WindowBlind'
       responses:
-        '200':
+        "200":
           description: OK
-        '400':
+        "400":
           description: bad request
-        '404':
+        "404":
           description: Not found
   /light:
     put:
@@ -73,11 +73,11 @@ paths:
             schema:
               $ref: '#/components/schemas/Light'
       responses:
-        '200':
+        "200":
           description: OK
-        '400':
+        "400":
           description: bad request
-        '404':
+        "404":
           description: Not found
   /notifications:
     get:
@@ -85,7 +85,7 @@ paths:
       tags:
         - Notifications
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
@@ -99,9 +99,9 @@ paths:
       tags:
         - Notifications
       parameters:
-        - $ref: '#/components/parameters/id64'
+      - $ref: '#/components/parameters/id64'
       responses:
-        '200':
+        "200":
           description: OK
 components:
   parameters:
