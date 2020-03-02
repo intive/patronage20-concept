@@ -3,14 +3,16 @@
   "title": "HVAC Room",
   "type": "object",
   "description": "HVAC room configuration",
-  "required": [
-    "id"
-  ],
+  "required": ["id", "type"],
   "properties": {
     "id": {
       "type": "integer",
       "format": "int32",
       "description": "rule ID"
+    },
+    "type": {
+        "type": "string",
+        "const": "HVACRoom"
     },
     "temperature": {
       "type": "integer",

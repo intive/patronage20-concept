@@ -3,14 +3,16 @@
     "title": "Light",
     "type": "object",
     "description": "House RGB light",
-    "required": [
-        "id"
-    ],
+    "required": ["id", "type"],
     "properties": {
         "id": {
             "type": "integer",
             "format": "int32",
             "description": "Light ID"
+        },
+        "type": {
+            "type": "string",
+            "const": "RGBLight"
         },
         "hue": {
             "type": "integer",
