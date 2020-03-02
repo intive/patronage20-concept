@@ -4,10 +4,7 @@
     "type": "object",
     "description": "House RGB light",
     "required": [
-        "id",
-        "hue",
-        "saturation",
-        "value"
+        "id"
     ],
     "properties": {
         "id": {
