@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "mock-server": "prism mock docs/gateway/openapi.yaml",
-    "mock-server:dynamic": "prism mock -d docs/gateway/openapi.yaml"
+    "start": "node index.js && prism mock docs/gateway/openapi.json"
   },
   "repository": {
     "type": "git",
