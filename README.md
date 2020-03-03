@@ -1,6 +1,7 @@
 # patronage20-concept
 
 ## Online mock server
+This server is deployed on each push to `master` branch.
 
 https://patronage20-concept-master.herokuapp.com/
 
