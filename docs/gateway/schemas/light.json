@@ -1,0 +1,36 @@
+{
+    "$id": "light.json",
+    "title": "Light",
+    "type": "object",
+    "description": "House RGB light",
+    "required": ["id", "type"],
+    "properties": {
+        "id": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Light ID"
+        },
+        "type": {
+            "type": "string",
+            "const": "RGBLight"
+        },
+        "hue": {
+            "type": "integer",
+            "format": "int32",
+            "minimum": 0,
+            "maximum": 359
+        },
+        "saturation": {
+            "type": "integer",
+            "format": "int32",
+            "minimum": 0,
+            "maximum": 100
+        },
+        "value": {
+            "type": "integer",
+            "format": "int32",
+            "minimum": 0,
+            "maximum": 100
+        }
+    }
+}

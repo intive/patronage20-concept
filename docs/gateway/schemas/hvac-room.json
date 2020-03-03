@@ -1,0 +1,49 @@
+{
+  "$id": "hvac-room.json",
+  "title": "HVAC Room",
+  "type": "object",
+  "description": "HVAC room configuration",
+  "required": ["id", "type"],
+  "properties": {
+    "id": {
+      "type": "integer",
+      "format": "int32",
+      "description": "rule ID"
+    },
+    "type": {
+        "type": "string",
+        "const": "HVACRoom"
+    },
+    "heating-temperature": {
+      "type": "integer",
+      "format": "int32",
+      "minimum": 50,
+      "maximum": 300,
+      "description": "In tens of degrees of Celsius. Must be lower at least by hysteresis than cooling temperature. Minimum value of 5 °C as we don't want to have frozen pipes"
+    },
+    "cooling-temperature": {
+      "type": "integer",
+      "format": "int32",
+      "minimum": 100,
+      "maximum": 400,
+      "description": "In tens of degrees of Celsius. Must be higher at least by hysteresis than heating temperature. Let's protect people against sunstroke"
+    },
+    "hysteresis": {
+      "type": "integer",
+      "format": "int32",
+      "minimum": 5,
+      "maximum": 20,
+      "description": "In tens of degrees of Celsius. Having no hysteresis at all is dangerous - 0.5 °C seems to be a reasonable minimum"
+    },
+    "temperatureSensorId": {
+      "$ref": "temperature-sensor.json#/properties/id"
+    },
+    "windowSensorIds": {
+      "type": "array",
+      "description": "Opened window sensor ID-s that disable HVAC for that room",
+      "items": {
+        "$ref": "window-sensor.json#/properties/id"
+      }
+    }
+  }
+}

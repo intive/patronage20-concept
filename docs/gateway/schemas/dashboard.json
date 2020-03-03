@@ -36,6 +36,18 @@
     },
     "HVACStatus": {
       "$ref": "hvac-status.json"
+    },
+    "HVACRooms": {
+      "type": "array",
+      "items": {
+        "$ref": "hvac-room.json"
+      }
+    },
+    "lights": {
+      "type": "array",
+      "items": {
+        "$ref": "light.json"
+      }
     }
   }
 }

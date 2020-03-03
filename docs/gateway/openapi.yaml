@@ -7,7 +7,7 @@ servers:
   - url: /smart-home
 tags:
   - name: Dashboard
-  - name: HVAC rules
+  - name: Configuration
   - name: Notifications
 paths:
   '/dashboard':
@@ -22,84 +22,61 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Dashboard'
-  '/rules/hvac':
-    get:
-      summary: Returns HVAC rules configurations
-      tags:
-        - HVAC rules
-      responses:
-        "200":
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/HVACRule'
-    post:
-      summary: Creates a room HVAC configuration and returns its ID
-      tags:
-        - HVAC rules
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/HVACRule'
-      responses:
-        "200":
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  id:
-                    $ref: '#/components/schemas/HVACRule/properties/id'
-        "400":
-          description: bad request
-  '/rules/hvac/{id}':
-    get:
-      summary: Returns HVAC rule configuration
-      tags:
-        - HVAC rules
-      parameters:
-      - $ref: '#/components/parameters/id32'
-      responses:
-        "200":
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/HVACRule'
-        "404":
-          description: Not found
+  '/hvac':
     put:
-      summary: Creates or updates a HVAC rule configuration with given ID
+      summary: Updates a HVAC room configuration
       tags:
-        - HVAC rules
+        - Configuration
       parameters:
-      - $ref: '#/components/parameters/id32'
+        - $ref: '#/components/parameters/id32'
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/HVACRule'
+              $ref: '#/components/schemas/HVACRoom'
       responses:
         "200":
           description: OK
         "400":
-          description: bad request
+          description: Bad Request
         "404":
           description: Not found
-    delete:
-      summary: Deletes a HVAC rule configuration with a given ID
+  '/blinds':
+    put:
+      summary: Sets Window blinds to given state.
       tags:
-        - HVAC rules
+        - Configuration
       parameters:
-      - $ref: '#/components/parameters/id32'
+        - $ref: '#/components/parameters/id32'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WindowBlind'
       responses:
         "200":
           description: OK
+        "400":
+          description: Bad Request
+        "404":
+          description: Not found
+  '/light':
+    put:
+      summary: Sets light to given color.
+      tags:
+        - Configuration
+      parameters:
+        - $ref: '#/components/parameters/id32'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Light'
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad Request
         "404":
           description: Not found
   '/notifications':
@@ -157,9 +134,9 @@ components:
       $ref: 'schemas/smoke-sensor.json'
     HVACStatus:
       $ref: 'schemas/hvac-status.json'
-    # LightPoint:
-    #   $ref: 'schema/light-point.json'
-    HVACRule:
-      $ref: 'schemas/hvac-rule.json'
+    HVACRoom:
+      $ref: 'schemas/hvac-room.json'
+    Light:
+      $ref: 'schemas/light.json' 
     Notification:
       $ref: 'schemas/notification.json'

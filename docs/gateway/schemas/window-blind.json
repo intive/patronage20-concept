@@ -18,8 +18,8 @@
       "type": "integer",
       "format": "int32",
       "description": "position of the window blind, 100 is fully open, 0 is fully closed",
-      "min": 0,
-      "max": 100
+      "minimum": 0,
+      "maximum": 100
     }
   }
 }
