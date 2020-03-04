@@ -96,5 +96,4 @@ module valve(a,s) {
 
 $fa = .1;
 $fs = .2;
-*valve(0,20);
-binding2();
+valve(0,20);
