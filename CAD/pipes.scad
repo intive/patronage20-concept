@@ -20,7 +20,7 @@ module pipe(di, do, w, h, dz) {
     c_len = sqrt(w_len * w_len + h_len * h_len);
     n_curve = ceil(get_n_frag(rc + .5 * do) * alpha / 360);
     n_ring = get_n_frag(.5 * do);
-    *echo(n_ring,n_curve);
+    echo(n_ring,n_curve);
     pts = concat(
         [
             for (i = [0:1:n_curve], j = [0:1:n_ring-1])
@@ -102,6 +102,6 @@ module pipes() {
     translate([360,300,0]) rotate([0,0,180]) pipes2();
 }
 
-//$fs = .2;
-//$fa = .1;
+$fs = .2;
+$fa = 2;
 pipes();
