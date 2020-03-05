@@ -1,26 +1,57 @@
 use <valve.scad>
+use <common.scad>
 
 module pipe(di, do, w, h, dz) {
-    r = .6 * do;
+    ri = .5 * di;
+    ro = .5 * do;
+    rc = .6 * do;
     w2 = sqrt(w*w+dz*dz);
     theta = atan2(dz,w);
-    al = atan2(w2,h);
-    d1 = w2*w2 - 4*w2*r + h*h;
-    assert(d1 >= 0, "Negative delta");
-    d = h*sqrt(d1);
-    cosa = (-2*r*(w2-2*r) + d) / ((w2-2*r)*(w2-2*r)+h*h);
+    delta1 = w2*w2 - 4*w2*rc + h*h;
+    assert(delta1 >= 0, "Negative delta");
+    delta = h*sqrt(delta1); // delta root
+    cosa = (-2*rc*(w2-2*rc) + delta) / ((w2-2*rc)*(w2-2*rc)+h*h);
     sina = sqrt(1 - cosa*cosa);
     alpha = acos(cosa);
-    h_off = r * sina;
-    w_off = r * (1 - cosa);
+    h_off = rc * sina;
+    w_off = rc * (1 - cosa);
     w_len = w2 - 2 * w_off;
     h_len = h - 2 * h_off;
     c_len = sqrt(w_len * w_len + h_len * h_len);
-    *echo(w2,theta,al,cosa,sina,alpha,h_off,w_off,h_len,w_len,c_len);
-    rotate([0,-theta,0]) {
-        *rotate([0,0,-al]) rotate([-90,0,0]) cylinder(d = do, h = sqrt(w*w+h*h+dz*dz));
-        translate([r,0,0]) rotate_extrude(angle = -alpha)
-            translate([-r,0]) difference() {
+    n_curve = ceil(get_n_frag(rc + .5 * do) * alpha / 360);
+    n_ring = get_n_frag(.5 * do);
+    echo(n_ring,n_curve);
+    pts = concat(
+        [
+            for (i = [0:1:n_curve], j = [0:1:n_ring-1])
+                let(ac = -i * alpha / n_curve, ar = j * 360 / n_ring,
+                    sinac = sin(ac), cosac = cos(ac), sinar = sin(ar), cosar = cos(ar))
+            each [
+                [(ro*cosar-rc)*cosac+rc,(ro*cosar-rc)*sinac,ro*sinar],
+                [(ri*cosar-rc)*cosac+rc,(ri*cosar-rc)*sinac,ri*sinar]
+            ]
+        ],
+        [
+            for (i = [n_curve:-1:0], j = [0:1:n_ring-1])
+                let(ac = -i * alpha / n_curve, ar = j * 360 / n_ring,
+                    sinac = sin(ac), cosac = cos(ac), sinar = sin(ar), cosar = cos(ar))
+            each [
+                [(ro*cosar+rc)*cosac-rc+w2,(ro*cosar+rc)*sinac+h,ro*sinar],
+                [(ri*cosar+rc)*cosac-rc+w2,(ri*cosar+rc)*sinac+h,ri*sinar]
+            ]
+        ]
+    );
+    fcs = concat(
+        [ for (j = [0:1:n_ring-1]) [2*j%(2*n_ring),(2*j+1)%(2*n_ring),(2*j+3)%(2*n_ring),(2*j+2)%(2*n_ring)]],
+        [ for (i = [0:1:2*n_curve], j = [0:1:n_ring-1]) let (k = (i*n_ring+j)*2, l = (i*n_ring+(j+1)%n_ring)*2)
+            each [[k,l,l+n_ring*2,k+n_ring*2],[l+1,k+1,k+n_ring*2+1,l+n_ring*2+1]]],
+        [ for (j = [0:1:n_ring-1]) let (k = 2*(2*n_curve+1)*n_ring)
+            [k+2*j%(2*n_ring),k+(2*j+2)%(2*n_ring),k+(2*j+3)%(2*n_ring),k+(2*j+1)%(2*n_ring)]]
+    );
+    rotate([0,-theta,0]) polyhedron(points = pts,faces = fcs);
+    *rotate([0,-theta,0]) union() {
+        translate([rc,0,0]) rotate_extrude(angle = -alpha)
+            translate([-rc,0]) difference() {
                 circle(d = do);
                 circle(d = di);
             }
@@ -28,8 +59,8 @@ module pipe(di, do, w, h, dz) {
             circle(d = do);
             circle(d = di);
         }
-        translate([w2-r,h,0]) rotate_extrude(angle = -alpha)
-            translate([r,0]) difference() {
+        translate([w2-rc,h,0]) rotate_extrude(angle = -alpha)
+            translate([rc,0]) difference() {
                 circle(d = do);
                 circle(d = di);
             }
@@ -71,6 +102,6 @@ module pipes() {
     translate([360,300,0]) rotate([0,0,180]) pipes2();
 }
 
-$fs = .2;
-$fa = .1;
+//$fs = .2;
+//$fa = .1;
 pipes();
