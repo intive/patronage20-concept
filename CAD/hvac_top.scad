@@ -48,8 +48,14 @@ module hvac_top() {
 
         translate([130,20,-10]) cube([100,100,83.5]);
         translate([133.5,23.5,73.5]) cube([93,93,31.5]);
-        translate([180,70,105]) rotate([-90,0,0])
-            scale([1.86,1.06,1]) cylinder(r = 25, h = 93, center = true);
+        hull() {
+            difference() {
+                translate([180,70,105]) rotate([-90,0,0])
+                    scale([1.86,1.06,1]) cylinder(r = 25, h = 93, center = true);
+                translate([133.5,23.5,73.5]) cube([93,93,31.5]);
+            }
+            translate([180,70,124]) rotate([-90,0,0]) cylinder(d = 15, h = 120, center = true);
+        }
         translate([180,70,124]) rotate([-90,0,0]) cylinder(d = 15, h = 200, center = true);
         
         translate([115,20,53]) cube([20,100,20.5]);
