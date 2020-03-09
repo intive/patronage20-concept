@@ -27,10 +27,16 @@ module hvac_top() {
             cylinder(d1 = 38, d2 = 56, h = 16.5);
             translate([-20,-30,0]) cube([40,60,16.5]);
         }
-        translate([60,130,124]) rotate([90,0,0])
-            linear_extrude(height = 50, scale = [2.6,1]) circle(d = 15, $fs = .05);
-        translate([60,10,124]) rotate([-90,0,0])
-            linear_extrude(height = 50, scale = [2.6,1]) circle(d = 15, $fs = .05);
+        translate([60,130,124]) rotate([90,0,0]) hull() {
+            cylinder(d = 15, h = 1);
+            translate([11,0,49]) cylinder(d = 15, h = 1);
+            translate([-11,0,49]) cylinder(d = 15, h = 1);
+        }
+        translate([60,10,124]) rotate([-90,0,0]) hull() {
+            cylinder(d = 15, h = 1);
+            translate([11,0,49]) cylinder(d = 15, h = 1);
+            translate([-11,0,49]) cylinder(d = 15, h = 1);
+        }
         translate([76,86,0]) cylinder(d = 2.5, h = 118.2);
         translate([44,86,0]) cylinder(d = 2.5, h = 118.2);
         translate([76,54,0]) cylinder(d = 2.5, h = 118.2);
