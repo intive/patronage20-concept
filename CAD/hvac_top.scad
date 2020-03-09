@@ -40,7 +40,15 @@ module hvac_top() {
             translate([-5,22.5+i,49]) cube([50,5,20]);
         
         translate([60,70,124]) rotate([-90,0,0]) cylinder(d = 15, h = 200, center = true);
+        translate([60,0,124]) rotate([90,0,0])
+            cylinder(d1 = 15, d2 = 21, h = 6, center = true);
+        translate([60,140,124]) rotate([-90,0,0])
+            cylinder(d1 = 15, d2 = 21, h = 6, center = true);
         translate([16,70,91]) rotate([-90,0,0]) cylinder(d = 15, h = 200, center = true);
+        translate([16,0,91]) rotate([90,0,0])
+            cylinder(d1 = 15, d2 = 21, h = 6, center = true);
+        translate([16,140,91]) rotate([-90,0,0])
+            cylinder(d1 = 15, d2 = 21, h = 6, center = true);
         hull() {
             translate([16,70,91]) rotate([-90,0,0]) cylinder(d = 15, h = 70, center = true);
             translate([35,35,77.5]) cube([10,70,27]);
@@ -57,6 +65,10 @@ module hvac_top() {
             translate([180,70,124]) rotate([-90,0,0]) cylinder(d = 15, h = 120, center = true);
         }
         translate([180,70,124]) rotate([-90,0,0]) cylinder(d = 15, h = 200, center = true);
+        translate([180,0,124]) rotate([90,0,0])
+            cylinder(d1 = 15, d2 = 21, h = 6, center = true);
+        translate([180,140,124]) rotate([-90,0,0])
+            cylinder(d1 = 15, d2 = 21, h = 6, center = true);
         
         translate([115,20,53]) cube([20,100,20.5]);
         hull() {
@@ -65,6 +77,10 @@ module hvac_top() {
                 cylinder(d = 15, h = 100, center = true);
         }
         translate([122.5,70,91]) rotate([-90,0,0]) cylinder(d = 15, h = 200, center = true);
+        translate([122.5,0,91]) rotate([90,0,0])
+            cylinder(d1 = 15, d2 = 21, h = 6, center = true);
+        translate([122.5,140,91]) rotate([-90,0,0])
+            cylinder(d1 = 15, d2 = 21, h = 6, center = true);
 
         translate([91,-1,79.1]) rotate([-90,0,0]) cylinder(d = 2,h = 50);
         translate([93.5,-1,79.1]) rotate([-90,0,0]) cylinder(d = 2,h = 50);
