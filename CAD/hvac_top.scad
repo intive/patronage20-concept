@@ -55,7 +55,8 @@ module hvac_top() {
         translate([115,20,53]) cube([20,100,20.5]);
         hull() {
             translate([115,23.5,67]) cube([15,93,6.5]);
-            translate([122.5,70,91]) rotate([-90,0,0]) cylinder(d = 15, h = 100, center = true);
+            translate([122.5,70,91]) rotate([-90,0,0])
+                cylinder(d = 15, h = 100, center = true);
         }
         translate([122.5,70,91]) rotate([-90,0,0]) cylinder(d = 15, h = 200, center = true);
 
