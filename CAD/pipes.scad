@@ -24,7 +24,7 @@ module pipe(di, do, w, h, dz) {
     pts = concat(
         [
             for (i = [0:1:n_curve], j = [0:1:n_ring-1])
-                let(ac = -i * alpha / n_curve, ar = j * 360 / n_ring,
+                let (ac = -i * alpha / n_curve, ar = j * 360 / n_ring,
                     sinac = sin(ac), cosac = cos(ac), sinar = sin(ar), cosar = cos(ar))
             each [
                 [(ro*cosar-rc)*cosac+rc,(ro*cosar-rc)*sinac,ro*sinar],
@@ -33,7 +33,7 @@ module pipe(di, do, w, h, dz) {
         ],
         [
             for (i = [n_curve:-1:0], j = [0:1:n_ring-1])
-                let(ac = -i * alpha / n_curve, ar = j * 360 / n_ring,
+                let (ac = -i * alpha / n_curve, ar = j * 360 / n_ring,
                     sinac = sin(ac), cosac = cos(ac), sinar = sin(ar), cosar = cos(ar))
             each [
                 [(ro*cosar+rc)*cosac-rc+w2,(ro*cosar+rc)*sinac+h,ro*sinar],
@@ -42,8 +42,13 @@ module pipe(di, do, w, h, dz) {
         ]
     );
     fcs = concat(
-        [ for (j = [0:1:n_ring-1]) [2*j%(2*n_ring),(2*j+1)%(2*n_ring),(2*j+3)%(2*n_ring),(2*j+2)%(2*n_ring)]],
-        [ for (i = [0:1:2*n_curve], j = [0:1:n_ring-1]) let (k = (i*n_ring+j)*2, l = (i*n_ring+(j+1)%n_ring)*2)
+        [ for (j = [0:1:n_ring-1]) [
+            2*j%(2*n_ring),
+            (2*j+1)%(2*n_ring),
+            (2*j+3)%(2*n_ring),
+            (2*j+2)%(2*n_ring)]],
+        [ for (i = [0:1:2*n_curve], j = [0:1:n_ring-1])
+            let (k = (i*n_ring+j)*2, l = (i*n_ring+(j+1)%n_ring)*2)
             each [[k,l,l+n_ring*2,k+n_ring*2],[l+1,k+1,k+n_ring*2+1,l+n_ring*2+1]]],
         [ for (j = [0:1:n_ring-1]) let (k = 2*(2*n_curve+1)*n_ring)
             [k+2*j%(2*n_ring),k+(2*j+2)%(2*n_ring),k+(2*j+3)%(2*n_ring),k+(2*j+1)%(2*n_ring)]]
