@@ -39,6 +39,11 @@ module pipe(di, do, w, h, dz) {
                 [(ro*cosar+rc)*cosac-rc+w2,(ro*cosar+rc)*sinac+h,ro*sinar],
                 [(ri*cosar+rc)*cosac-rc+w2,(ri*cosar+rc)*sinac+h,ri*sinar]
             ]
+        ],
+        [
+            for (j = [0:1:n_ring-1])
+                let(ar = j * 360 / n_ring, sinar = sin(ar), cosar = cos(ar))
+            [ri*cosar+w2,h+3,ri*sinar]
         ]
     );
     fcs = concat(
@@ -51,7 +56,17 @@ module pipe(di, do, w, h, dz) {
             let (k = (i*n_ring+j)*2, l = (i*n_ring+(j+1)%n_ring)*2)
             each [[k,l,l+n_ring*2,k+n_ring*2],[l+1,k+1,k+n_ring*2+1,l+n_ring*2+1]]],
         [ for (j = [0:1:n_ring-1]) let (k = 2*(2*n_curve+1)*n_ring)
-            [k+2*j%(2*n_ring),k+(2*j+2)%(2*n_ring),k+(2*j+3)%(2*n_ring),k+(2*j+1)%(2*n_ring)]]
+            each [
+                [k+2*j%(2*n_ring),
+                k+(2*j+2)%(2*n_ring),
+                k+(j+1)%(n_ring)+2*n_ring,
+                k+j+2*n_ring],
+                [k+j+2*n_ring,
+                k+(j+1)%(n_ring)+2*n_ring,
+                k+(2*j+3)%(2*n_ring),
+                k+(2*j+1)%(2*n_ring)]
+            ]
+        ]
     );
     rotate([0,-theta,0]) polyhedron(points = pts,faces = fcs);
 }
