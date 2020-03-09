@@ -49,22 +49,6 @@ module pipe(di, do, w, h, dz) {
             [k+2*j%(2*n_ring),k+(2*j+2)%(2*n_ring),k+(2*j+3)%(2*n_ring),k+(2*j+1)%(2*n_ring)]]
     );
     rotate([0,-theta,0]) polyhedron(points = pts,faces = fcs);
-    *rotate([0,-theta,0]) union() {
-        translate([rc,0,0]) rotate_extrude(angle = -alpha)
-            translate([-rc,0]) difference() {
-                circle(d = do);
-                circle(d = di);
-            }
-        translate([w_off,h_off,0]) rotate([0,90,90-alpha]) linear_extrude(height = c_len) difference() {
-            circle(d = do);
-            circle(d = di);
-        }
-        translate([w2-rc,h,0]) rotate_extrude(angle = -alpha)
-            translate([rc,0]) difference() {
-                circle(d = do);
-                circle(d = di);
-            }
-    }
 }
 
 module pipes1() {
