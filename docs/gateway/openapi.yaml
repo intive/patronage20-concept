@@ -46,8 +46,6 @@ paths:
       summary: Sets Window blinds to given state.
       tags:
         - Configuration
-      parameters:
-        - $ref: '#/components/parameters/id32'
       requestBody:
         content:
           application/json:
@@ -65,8 +63,6 @@ paths:
       summary: Sets light to given color.
       tags:
         - Configuration
-      parameters:
-        - $ref: '#/components/parameters/id32'
       requestBody:
         content:
           application/json:
@@ -137,6 +133,6 @@ components:
     HVACRoom:
       $ref: 'schemas/hvac-room.json'
     Light:
-      $ref: 'schemas/light.json' 
+      $ref: 'schemas/light.json'
     Notification:
       $ref: 'schemas/notification.json'
